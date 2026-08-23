@@ -2,7 +2,7 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-// Define the Announcements collection
+// Define the Announcements/News collection
 const announcements = defineCollection({
     loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/announcements' }),
     schema: z.object({
@@ -10,26 +10,22 @@ const announcements = defineCollection({
         date: z.coerce.date(),
         excerpt: z.string().optional(),
         author: z.string().optional(),
-        category: z.string().optional(),
+        category: z.enum(['news', 'announcement', 'camp-meeting', 'event']).default('announcement'),
+        image: z.string().optional(),
+        isPinned: z.boolean().optional(),
+        eventDetails: z.object({
+            startDate: z.coerce.date(),
+            endDate: z.coerce.date(),
+            venue: z.string(),
+            district: z.string(),
+            county: z.string().optional(),
+            theme: z.string().optional(),
+            speaker: z.string().optional(),
+            speakerTitle: z.string().optional(),
+            givingPaybill: z.string().optional(),
+            givingAccount: z.string().optional(),
+        }).optional(),
     }),
 });
 
-// Define the Camp Meetings collection
-const campMeetings = defineCollection({
-    loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/camp-meetings' }),
-    schema: z.object({
-        title: z.string(),
-        district: z.string(),
-        county: z.string().optional(),
-        theme: z.string().optional(),
-        startDate: z.coerce.date(),
-        endDate: z.coerce.date(),
-        speaker: z.string().optional(),
-        speakerTitle: z.string().optional(),
-        venue: z.string(),
-        givingPaybill: z.string().optional(),
-        givingAccount: z.string().optional(),
-    }),
-});
-
-export const collections = { announcements, campMeetings };
+export const collections = { announcements };

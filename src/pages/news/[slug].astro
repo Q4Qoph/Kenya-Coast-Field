@@ -1,0 +1,205 @@
+---
+// src/pages/news/[slug].astro
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const announcements = await getCollection("announcements");
+  return announcements.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const data = post.data;
+const { Content } = await render(post);
+
+const dateStr = new Date(data.date).toLocaleDateString("en-US", {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+const isEvent = data.category === "camp-meeting" || data.category === "event";
+const event = data.eventDetails;
+---
+
+<BaseLayout
+  title={data.title}
+  description={data.excerpt || `Read details of ${data.title} from Kenya Coast Field.`}
+  ogImage={data.image}
+>
+  <Header />
+
+  <main class="flex-grow">
+    <!-- Back Button & Breadcrumb -->
+    <div class="bg-slate-50 border-b border-slate-200 py-4 px-4 sm:px-8">
+      <div class="max-w-4xl mx-auto flex items-center gap-2 text-xs font-semibold text-slate-500">
+        <a href="/news" class="hover:text-[#003366] transition">📰 News & Updates</a>
+        <span>/</span>
+        <span class="text-slate-900 truncate">{data.title}</span>
+      </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <article class="max-w-4xl mx-auto px-4 sm:px-8 py-10">
+      <div class="space-y-6">
+        <!-- Title & Meta -->
+        <div class="space-y-3">
+          <span class={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border shadow-xs ${
+            data.category === 'camp-meeting' ? 'bg-amber-100 text-amber-900 border-amber-200' :
+            data.category === 'event' ? 'bg-blue-100 text-blue-900 border-blue-200' :
+            data.category === 'news' ? 'bg-emerald-100 text-emerald-900 border-emerald-200' :
+            'bg-slate-100 text-slate-900 border-slate-200'
+          }`}>
+            {data.category === 'camp-meeting' ? '⛺ Camp Meeting' :
+             data.category === 'event' ? '📅 Special Event' :
+             data.category === 'news' ? '📰 News Report' :
+             '📣 Announcement'}
+          </span>
+
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-slate-900 leading-tight">
+            {data.title}
+          </h1>
+
+          <div class="flex flex-wrap items-center gap-4 text-xs text-slate-500 font-mono pt-1">
+            <span>🕒 Published: {dateStr}</span>
+            {data.author && (
+              <>
+                <span>•</span>
+                <span>By: <strong>{data.author}</strong></span>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Featured Image */}
+        {data.image && (
+          <div class="aspect-video w-full rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100">
+            <img
+              src={data.image}
+              alt={data.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
+
+        {/* Grid: Event Details Card & Description */}
+        <div class="grid md:grid-cols-3 gap-8 pt-4">
+          
+          {/* Main Body Column */}
+          <div class="md:col-span-2 space-y-6">
+            <div class="prose prose-slate max-w-none text-slate-700 text-sm sm:text-base leading-relaxed space-y-4">
+              <Content />
+            </div>
+
+            {/* Back CTA */}
+            <div class="pt-6 border-t border-slate-100">
+              <a
+                href="/news"
+                class="inline-flex items-center gap-2 text-sm font-bold text-[#003366] hover:text-[#E36520] transition uppercase tracking-wider"
+              >
+                ← Back to News & Announcements
+              </a>
+            </div>
+          </div>
+
+          {/* Sidebar / Event Details Column */}
+          <div class="space-y-6">
+            {isEvent && event && (
+              <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-xs space-y-4">
+                <h3 class="font-serif font-bold text-base text-[#003366] border-b border-slate-200 pb-2">
+                  Event Information
+                </h3>
+                
+                <div class="space-y-3 text-xs text-slate-600">
+                  {event.theme && (
+                    <div class="bg-amber-50 text-amber-900 border border-amber-200 p-3 rounded-lg italic">
+                      <strong>Theme:</strong> "{event.theme}"
+                    </div>
+                  )}
+                  
+                  <div>
+                    <strong class="text-slate-900 block mb-0.5">📍 Venue:</strong>
+                    <span>{event.venue}</span>
+                  </div>
+
+                  <div>
+                    <strong class="text-slate-900 block mb-0.5">📅 Dates:</strong>
+                    <span>
+                      {new Date(event.startDate).toLocaleDateString("en-US", { month: "long", day: "numeric" })}
+                      {" – "}
+                      {new Date(event.endDate).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+                    </span>
+                  </div>
+
+                  {event.speaker && (
+                    <div>
+                      <strong class="text-slate-900 block mb-0.5">🎙️ Guest Speaker:</strong>
+                      <span>{event.speaker}</span>
+                      {event.speakerTitle && <span class="text-slate-400 block text-[10px]">{event.speakerTitle}</span>}
+                    </div>
+                  )}
+
+                  <div>
+                    <strong class="text-slate-900 block mb-0.5">🏛️ Administrative Unit:</strong>
+                    <span>{event.district} {event.county ? `, ${event.county} County` : ""}</span>
+                  </div>
+                </div>
+
+                {/* Event Giving / Paybill Support */}
+                {event.givingPaybill && (
+                  <div class="border-t border-slate-200 pt-4 space-y-2">
+                    <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Support This Event</span>
+                    <div class="bg-white border border-slate-200 p-3 rounded-lg text-xs font-mono">
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-slate-500">Paybill:</span>
+                        <strong class="text-[#003366]">{event.givingPaybill}</strong>
+                      </div>
+                      <div class="flex justify-between items-center">
+                        <span class="text-slate-500">Account:</span>
+                        <strong class="text-amber-700">{event.givingAccount}</strong>
+                      </div>
+                    </div>
+                    <a
+                      href="/giving"
+                      class="block text-center py-2 bg-[#003366] hover:bg-blue-900 text-white rounded-lg text-xs font-bold transition shadow-xs"
+                    >
+                      💳 Give Online
+                    </a>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Official KCF Card */}
+            <div class="bg-[#082347] text-white p-6 rounded-2xl shadow-xs space-y-2.5">
+              <div class="flex items-center gap-2">
+                <img
+                  src="/assets/sda/symbol/adventist-symbol--white.svg"
+                  alt="SDA logo"
+                  class="h-8 w-auto"
+                />
+                <span class="font-serif font-bold text-xs">Kenya Coast Field</span>
+              </div>
+              <p class="text-[11px] text-slate-300 leading-relaxed">
+                Need verification or further details regarding this announcement? Contact the Communication and media Desk.
+              </p>
+              <div class="pt-2 border-t border-white/10 text-[10px] text-amber-300 font-mono">
+                📞 +254 (0) 724 561 850<br/>
+                ✉️ kcfcommunication@kcf.adventist.or.ke
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <Footer />
+</BaseLayout>

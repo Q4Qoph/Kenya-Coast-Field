@@ -1,0 +1,64 @@
+---
+// src/pages/news.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import NewsGrid from "../components/NewsGrid.tsx";
+import { getCollection } from "astro:content";
+
+// Query all announcements
+const announcements = await getCollection("announcements");
+// Map to format that is JSON-serializable for the React component
+const serializedAnnouncements = announcements.map((post) => ({
+  id: post.id,
+  slug: post.id,
+  body: post.body || "",
+  data: {
+    title: post.data.title,
+    date: post.data.date.toISOString(),
+    excerpt: post.data.excerpt,
+    author: post.data.author,
+    category: post.data.category,
+    image: post.data.image,
+    eventDetails: post.data.eventDetails ? {
+      startDate: post.data.eventDetails.startDate.toISOString(),
+      endDate: post.data.eventDetails.endDate.toISOString(),
+      venue: post.data.eventDetails.venue,
+      district: post.data.eventDetails.district,
+      county: post.data.eventDetails.county,
+      theme: post.data.eventDetails.theme,
+      speaker: post.data.eventDetails.speaker,
+      speakerTitle: post.data.eventDetails.speakerTitle,
+      givingPaybill: post.data.eventDetails.givingPaybill,
+      givingAccount: post.data.eventDetails.givingAccount,
+    } : undefined,
+  },
+}));
+---
+
+<BaseLayout
+  title="News & Announcements"
+  description="Stay updated with the latest news, announcements, annual convocations, and upcoming events across the Kenya Coast Field."
+>
+  <Header />
+
+  <main class="flex-grow">
+    <!-- Header Banner -->
+    <div class="bg-gradient-to-r from-[#082347] to-[#003366] text-white py-12 px-4 sm:px-8 border-b border-white/10">
+      <div class="max-w-7xl mx-auto">
+        <span class="text-amber-400 font-bold uppercase tracking-wider text-xs">Official KCF Updates</span>
+        <h1 class="text-3xl sm:text-4xl font-serif font-bold mt-1 mb-2">News & Announcements</h1>
+        <p class="text-slate-300 text-sm sm:text-base max-w-2xl">
+          Stay connected with local church updates, administrative declarations, events, and reports from the Kenya Coast Field.
+        </p>
+      </div>
+    </div>
+
+    <!-- Interactive Grid Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-12">
+      <NewsGrid client:load announcements={serializedAnnouncements as any} />
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

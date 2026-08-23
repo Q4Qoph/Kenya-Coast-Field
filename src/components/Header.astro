@@ -1,40 +1,105 @@
 ---
 // src/components/Header.astro
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/find-a-church", label: "Find a Church" },
-  { href: "/camp-meetings", label: "Camp Meetings" },
+  { href: "/news", label: "News / Announcements" },
   { href: "/ministries", label: "Ministries" },
   { href: "/leadership", label: "Leadership" },
   { href: "/prayer-request", label: "Prayer Desk" },
 ];
 ---
 
-<header class="w-full bg-white text-slate-800 border-b border-slate-200 sticky top-0 z-50">
-  <!-- Tier 1: Utility Bar (Matching ECD & TED ALPS Headers) -->
-  <div class="border-b border-slate-100 text-xs py-1.5 px-4 sm:px-8 text-slate-500 bg-slate-50/70">
-    <div class="max-w-7xl mx-auto flex justify-between items-center text-[11px]">
-      <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-[#2F557F]"></span>
-        <span>A Field of the <strong>East Kenya Union Conference (EKUC)</strong></span>
+<!-- Tier 1: Utility Bar (Matching KCF/ALPS Guidelines - Scrolls off-screen) -->
+<div
+  class="w-full bg-[#2F557F] text-white text-xs py-2 px-4 sm:px-8 select-none border-b border-blue-700/30"
+>
+  <div
+    class="max-w-7xl mx-auto flex justify-between items-center text-[11px] font-medium tracking-wide"
+  >
+    <div class="flex items-center gap-2 text-white/90">
+      <span
+        >A Field of the <strong>East Kenya Union Conference (EKUC)</strong
+        ></span
+      >
+    </div>
+    <div class="hidden sm:flex items-center gap-4">
+      <a href="/find-a-church" class="hover:text-amber-300 transition uppercase"
+        >Find a Church</a
+      >
+      <span class="text-white/20">|</span>
+      <a
+        href="https://sabbath-school.adventech.io"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-amber-300 transition uppercase">E-Quarterly</a
+      >
+      <span class="text-white/20">|</span>
+
+      <!-- Languages Hover Dropdown -->
+      <div class="relative group">
+        <button
+          type="button"
+          class="hover:text-amber-300 transition flex items-center gap-1 font-semibold cursor-pointer uppercase"
+        >
+          🌐 Languages
+          <svg
+            class="w-2.5 h-2.5 ml-0.5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div
+          class="absolute right-0 mt-2 w-32 bg-white text-slate-800 rounded-lg shadow-lg border border-slate-200 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+        >
+          <a
+            href="/?lang=en"
+            class="block px-3 py-1.5 text-xs hover:bg-slate-50 text-slate-700 hover:text-[#2F557F] font-semibold"
+            >English</a
+          >
+          <a
+            href="/?lang=sw"
+            class="block px-3 py-1.5 text-xs hover:bg-slate-50 text-slate-700 hover:text-[#2F557F] font-semibold"
+            >Kiswahili</a
+          >
+        </div>
       </div>
-      <div class="hidden sm:flex items-center gap-4 font-medium tracking-wide">
-        <a href="/prayer-request" class="hover:text-[#2F557F] transition">PRAYER DESK</a>
-        <span class="text-slate-300">|</span>
-        <a href="https://sabbath-school.adventech.io" target="_blank" rel="noopener noreferrer" class="hover:text-[#2F557F] transition">E-QUARTERLY</a>
-        <span class="text-slate-300">|</span>
-        <span class="text-[#2F557F] font-semibold">★ KISWAHILI / ENG</span>
-        <span class="text-slate-300">|</span>
-        <a href="/find-a-church" class="hover:text-[#2F557F] transition flex items-center gap-1">
-          <span>SEARCH</span>
-          <span>🔍</span>
-        </a>
-      </div>
+
+      <span class="text-white/20">|</span>
+      <a
+        href="/find-a-church"
+        class="hover:text-amber-300 transition flex items-center gap-1.5 uppercase"
+      >
+        <span>Search</span>
+        <svg
+          class="w-3 h-3"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2.5"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+      </a>
     </div>
   </div>
+</div>
 
-  <!-- Tier 2: Official ALPS Lockup & Main Navigation -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 flex items-center justify-between">
+<!-- Tier 2: Sticky Main Navigation Header (Pins to top on scroll) -->
+<header
+  class="w-full bg-white text-slate-800 border-b border-slate-200 sticky top-0 z-50 shadow-xs"
+>
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 flex items-center justify-between"
+  >
     <!-- Official Seventh-day Adventist Entity Lockup (Matching ECD screenshot & Guidelines) -->
     <a href="/" class="flex items-center gap-3 group py-1 select-none">
       <!-- Seventh-day Adventist Flame Symbol -->
@@ -45,28 +110,38 @@ const navLinks = [
       />
       <!-- Wordmark + Entity Identifier Below (Pure Advent Sans Typography) -->
       <div class="flex flex-col justify-center font-advent leading-none">
-        <span class="text-[15px] sm:text-[17px] font-bold text-[#2F557F] tracking-tight leading-none">
+        <span
+          class="text-[15px] sm:text-[17px] font-bold text-[#2F557F] tracking-tight leading-none"
+        >
           Seventh-day
         </span>
-        <span class="text-[15px] sm:text-[17px] font-bold text-[#2F557F] tracking-tight leading-none mt-0.5">
+        <span
+          class="text-[15px] sm:text-[17px] font-bold text-[#2F557F] tracking-tight leading-none mt-0.5"
+        >
           Adventist Church
         </span>
-        <span class="text-[9px] sm:text-[10px] font-bold text-[#3E8391] uppercase tracking-[0.24em] leading-none mt-1.5">
+        <span
+          class="text-[9px] sm:text-[10px] font-bold text-[#3E8391] uppercase tracking-[0.24em] leading-none mt-1.5"
+        >
           Kenya Coast Field
         </span>
       </div>
     </a>
 
-    <!-- Desktop Navigation Links (Matching ECD & Adventist.org typography) -->
-    <nav class="hidden lg:flex items-center gap-7 text-sm font-normal text-slate-800">
-      {navLinks.map((item) => (
-        <a
-          href={item.href}
-          class="hover:text-[#2F557F] transition font-normal py-1 border-b-2 border-transparent hover:border-[#2F557F]"
-        >
-          {item.label}
-        </a>
-      ))}
+    <!-- Desktop Navigation Links -->
+    <nav
+      class="hidden lg:flex items-center gap-7 text-sm font-normal text-slate-800"
+    >
+      {
+        navLinks.map((item) => (
+          <a
+            href={item.href}
+            class="hover:text-[#2F557F] transition font-normal py-1 border-b-2 border-transparent hover:border-[#2F557F]"
+          >
+            {item.label}
+          </a>
+        ))
+      }
       <a
         href="/giving"
         class="px-4 py-2 rounded-full bg-[#2F557F] hover:bg-[#234974] text-white font-medium text-xs uppercase tracking-wider transition shadow-xs"
@@ -82,22 +157,36 @@ const navLinks = [
       aria-label="Toggle Navigation"
       class="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 focus:outline-none"
     >
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
     </button>
   </div>
 
-  <!-- Mobile Drawer Menu -->
-  <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-200 px-4 py-4 space-y-3">
-    {navLinks.map((item) => (
-      <a
-        href={item.href}
-        class="block py-2 text-sm font-medium text-slate-700 hover:text-[#2F557F] transition border-b border-slate-100"
-      >
-        {item.label}
-      </a>
-    ))}
+  <!-- Mobile Drawer Menu (Nested inside sticky header so it stays sticky when open) -->
+  <div
+    id="mobile-menu"
+    class="hidden lg:hidden bg-white border-t border-slate-200 px-4 py-4 space-y-3"
+  >
+    {
+      navLinks.map((item) => (
+        <a
+          href={item.href}
+          class="block py-2 text-sm font-medium text-slate-700 hover:text-[#2F557F] transition border-b border-slate-100"
+        >
+          {item.label}
+        </a>
+      ))
+    }
     <div class="pt-2 flex flex-col gap-2">
       <a
         href="/prayer-request"
@@ -116,11 +205,11 @@ const navLinks = [
 </header>
 
 <script>
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
   if (btn && menu) {
-    btn.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
     });
   }
 </script>

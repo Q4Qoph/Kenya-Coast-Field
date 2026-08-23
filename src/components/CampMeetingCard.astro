@@ -3,14 +3,19 @@
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
-  meeting: CollectionEntry<"campMeetings">;
+  meeting: CollectionEntry<"announcements">;
 }
 
 const { meeting } = Astro.props;
 const data = meeting.data;
+const event = data.eventDetails;
 
-const start = new Date(data.startDate);
-const end = new Date(data.endDate);
+if (!event) {
+  throw new Error(`Announcement "${data.title}" is not configured with eventDetails.`);
+}
+
+const start = new Date(event.startDate);
+const end = new Date(event.endDate);
 
 const monthName = start.toLocaleDateString("en-US", { month: "short" });
 const startDay = start.getDate();
@@ -22,7 +27,7 @@ const year = start.getFullYear();
   <div class="p-6">
     <div class="flex items-center justify-between gap-2 mb-3">
       <span class="inline-block px-2.5 py-0.5 text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-200 rounded-full">
-        {data.county ? `${data.county} County` : data.district}
+        {event.county ? `${event.county} County` : event.district}
       </span>
       <span class="text-xs font-mono font-bold text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded">
         {monthName} {startDay}–{endDay}, {year}
@@ -33,30 +38,30 @@ const year = start.getFullYear();
       {data.title}
     </h3>
     
-    {data.theme && (
+    {event.theme && (
       <div class="mb-3 text-xs italic text-amber-800 bg-amber-50/50 p-2 rounded border-l-2 border-amber-400">
-        "{data.theme}"
+        "{event.theme}"
       </div>
     )}
 
     <div class="space-y-1.5 text-xs text-slate-600 border-t border-slate-100 pt-3">
-      <p>📍 <strong>Venue:</strong> {data.venue}</p>
-      {data.speaker && (
+      <p>📍 <strong>Venue:</strong> {event.venue}</p>
+      {event.speaker && (
         <p>
-          🎙️ <strong>Guest Speaker:</strong> {data.speaker}
-          {data.speakerTitle && <span class="text-slate-400"> ({data.speakerTitle})</span>}
+          🎙️ <strong>Guest Speaker:</strong> {event.speaker}
+          {event.speakerTitle && <span class="text-slate-400"> ({event.speakerTitle})</span>}
         </p>
       )}
-      <p>🏛️ <strong>District:</strong> {data.district}</p>
+      <p>🏛️ <strong>District:</strong> {event.district}</p>
     </div>
   </div>
 
-  {data.givingPaybill && (
+  {event.givingPaybill && (
     <div class="bg-slate-50 px-6 py-3 border-t border-slate-100 flex items-center justify-between text-xs">
       <div class="font-mono">
-        <span class="text-slate-500">Paybill:</span> <strong class="text-[#003366]">{data.givingPaybill}</strong>
+        <span class="text-slate-500">Paybill:</span> <strong class="text-[#003366]">{event.givingPaybill}</strong>
         <span class="text-slate-400 mx-1">|</span>
-        <span class="text-slate-500">Acc:</span> <strong class="text-amber-700">{data.givingAccount}</strong>
+        <span class="text-slate-500">Acc:</span> <strong class="text-amber-700">{event.givingAccount}</strong>
       </div>
       <a href="/giving" class="text-[11px] font-bold text-amber-600 hover:text-amber-700 hover:underline">
         Give to Camp →
