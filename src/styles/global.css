@@ -1,0 +1,74 @@
+/* src/styles/global.css */
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Advent Sans Logo";
+  src: url("/fonts/AdventSans-Logo.otf") format("opentype");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Official ALPS Primary Colors (adventist.design) */
+  --color-adventist-denim: #2F557F;
+  --color-adventist-dark: #082347;
+  --color-adventist-night: #041a36;
+  --color-adventist-campfire: #E36520;
+  --color-adventist-emperor: #4B207F;
+  --color-adventist-earth: #5E3929;
+  --color-adventist-grapevine: #7F264A;
+  --color-adventist-treefrog: #448D21;
+
+  /* Official ALPS Secondary Colors */
+  --color-adventist-ming: #3E8391;
+  --color-adventist-warm: #FFA92D;
+  --color-adventist-cool: #4D7549;
+
+  /* Neutrals & Surfaces */
+  --color-adventist-canvas: #F8FAFC;
+  --color-adventist-tint: #EBF3FA;
+
+  /* Legacy aliases for backward compatibility */
+  --color-adventist-blue: #003366;
+  --color-adventist-bluejay: #0055AA;
+  --color-adventist-ochre: #FFA92D;
+  --color-adventist-gold: #FFA92D;
+
+  /* Typography: Noto Sans (Body & UI) + Noto Serif (Headings) + Advent Sans Logo (Brand Identity) */
+  --font-sans: "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Noto Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-advent: "Advent Sans Logo", "Noto Sans", sans-serif;
+}
+
+/* Creation Grid System (7 equal-width columns as specified in adventist.design) */
+.creation-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.content-columns {
+  grid-column: span 6 / span 6;
+}
+
+.sabbath-column {
+  grid-column: span 1 / span 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .creation-grid {
+    grid-template-columns: 1fr;
+  }
+  .content-columns {
+    grid-column: span 1 / span 1;
+  }
+  .sabbath-column {
+    display: none;
+  }
+}

@@ -1,0 +1,66 @@
+---
+// src/components/CampMeetingCard.astro
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  meeting: CollectionEntry<"campMeetings">;
+}
+
+const { meeting } = Astro.props;
+const data = meeting.data;
+
+const start = new Date(data.startDate);
+const end = new Date(data.endDate);
+
+const monthName = start.toLocaleDateString("en-US", { month: "short" });
+const startDay = start.getDate();
+const endDay = end.getDate();
+const year = start.getFullYear();
+---
+
+<div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col justify-between">
+  <div class="p-6">
+    <div class="flex items-center justify-between gap-2 mb-3">
+      <span class="inline-block px-2.5 py-0.5 text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-200 rounded-full">
+        {data.county ? `${data.county} County` : data.district}
+      </span>
+      <span class="text-xs font-mono font-bold text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded">
+        {monthName} {startDay}–{endDay}, {year}
+      </span>
+    </div>
+
+    <h3 class="font-serif font-bold text-xl text-[#003366] leading-snug mb-1">
+      {data.title}
+    </h3>
+    
+    {data.theme && (
+      <div class="mb-3 text-xs italic text-amber-800 bg-amber-50/50 p-2 rounded border-l-2 border-amber-400">
+        "{data.theme}"
+      </div>
+    )}
+
+    <div class="space-y-1.5 text-xs text-slate-600 border-t border-slate-100 pt-3">
+      <p>📍 <strong>Venue:</strong> {data.venue}</p>
+      {data.speaker && (
+        <p>
+          🎙️ <strong>Guest Speaker:</strong> {data.speaker}
+          {data.speakerTitle && <span class="text-slate-400"> ({data.speakerTitle})</span>}
+        </p>
+      )}
+      <p>🏛️ <strong>District:</strong> {data.district}</p>
+    </div>
+  </div>
+
+  {data.givingPaybill && (
+    <div class="bg-slate-50 px-6 py-3 border-t border-slate-100 flex items-center justify-between text-xs">
+      <div class="font-mono">
+        <span class="text-slate-500">Paybill:</span> <strong class="text-[#003366]">{data.givingPaybill}</strong>
+        <span class="text-slate-400 mx-1">|</span>
+        <span class="text-slate-500">Acc:</span> <strong class="text-amber-700">{data.givingAccount}</strong>
+      </div>
+      <a href="/giving" class="text-[11px] font-bold text-amber-600 hover:text-amber-700 hover:underline">
+        Give to Camp →
+      </a>
+    </div>
+  )}
+</div>

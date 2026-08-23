@@ -1,0 +1,44 @@
+[
+  {
+    "id": "adventist-youth",
+    "name": "Adventist Youth Ministries (AYM)",
+    "description": "Nurturing Adventurers, Pathfinders, Ambassadors, and Young Adults in faith and Christian mission.",
+    "icon": "⛺",
+    "director": "Pr. Tom Osiemo"
+  },
+  {
+    "id": "sspm",
+    "name": "Sabbath School & Personal Ministries",
+    "description": "Fostering daily Bible study, community evangelism, and small group discipleship across coastal districts.",
+    "icon": "📖",
+    "director": "Pr. Emmanuel Safari"
+  },
+  {
+    "id": "women-ministries",
+    "name": "Women's Ministries",
+    "description": "Uplifting and equipping Adventist women through spiritual revival, community outreach, and mentorship.",
+    "icon": "🌸",
+    "director": "Field Director"
+  },
+  {
+    "id": "adventist-health",
+    "name": "Health Ministries",
+    "description": "Promoting the NEWSTART health principles, medical missionary outreach, and coastal wellness expos.",
+    "icon": "🍏",
+    "director": "Field Director"
+  },
+  {
+    "id": "publishing",
+    "name": "Publishing & Literature Ministry",
+    "description": "Distributing Ellen G. White writings, Christian literature, and tracts across Mombasa and surrounding towns.",
+    "icon": "📚",
+    "director": "Pr. Joseph Kariuki"
+  },
+  {
+    "id": "communication",
+    "name": "Communication & Sheki FM",
+    "description": "Broadcasting hope, digital media ministry, public relations, and Sheki FM coastal radio operations.",
+    "icon": "📻",
+    "director": "Elder David Mganga"
+  }
+]

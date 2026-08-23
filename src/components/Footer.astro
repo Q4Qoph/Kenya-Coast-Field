@@ -1,0 +1,103 @@
+---
+// src/components/Footer.astro
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-[#05172e] text-slate-300 border-t border-slate-800 text-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-8 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
+    <!-- Brand and Address -->
+    <div class="md:col-span-1 space-y-4">
+      <div class="flex items-center gap-3">
+        <img
+          src="/assets/sda/symbol/adventist-symbol--white.svg"
+          alt="Seventh-day Adventist Church Symbol"
+          class="h-13 sm:h-15 w-auto shrink-0"
+        />
+        <div class="flex flex-col justify-center font-advent leading-none">
+          <span class="text-base sm:text-[17px] font-bold text-white tracking-tight leading-none">
+            Seventh-day
+          </span>
+          <span class="text-base sm:text-[17px] font-bold text-white tracking-tight leading-none mt-0.5">
+            Adventist Church
+          </span>
+          <span class="text-[9px] sm:text-[10px] font-bold text-amber-300 uppercase tracking-[0.24em] leading-none mt-1.5">
+            Kenya Coast Field
+          </span>
+        </div>
+      </div>
+      <p class="text-xs leading-relaxed text-slate-400 pt-1">
+        Bamburi Mtambo Road, Off Mombasa-Malindi Highway<br />
+        P.O. Box 80251 - 80100, Mombasa, Kenya<br />
+        <span class="block mt-2">Tel: +254 (0) 724 561 850</span>
+        <span>Email: info@kcf.adventist.or.ke</span>
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h4 class="text-white font-bold text-xs uppercase tracking-widest text-amber-400 mb-3">Quick Navigation</h4>
+      <ul class="space-y-2 text-xs">
+        <li><a href="/find-a-church" class="hover:text-amber-300 transition">Find a Church Directory</a></li>
+        <li><a href="/camp-meetings" class="hover:text-amber-300 transition">2026 Camp Meetings</a></li>
+        <li><a href="/giving" class="hover:text-amber-300 transition">Online Giving & Tithes</a></li>
+        <li><a href="/prayer-request" class="hover:text-amber-300 transition">Confidential Prayer Desk</a></li>
+        <li><a href="/leadership" class="hover:text-amber-300 transition">Field Leadership Directory</a></li>
+      </ul>
+    </div>
+
+    <!-- Institutional Affiliations -->
+    <div>
+      <h4 class="text-white font-bold text-xs uppercase tracking-widest text-amber-400 mb-3">Denominational Hierarchy</h4>
+      <ul class="space-y-2 text-xs">
+        <li>
+          <a href="https://adventist.or.ke" target="_blank" rel="noopener noreferrer" class="hover:text-amber-300 transition"
+            >East Kenya Union Conference (EKUC)</a
+          >
+        </li>
+        <li>
+          <a href="https://ecd.adventist.org" target="_blank" rel="noopener noreferrer" class="hover:text-amber-300 transition"
+            >East-Central Africa Division (ECD)</a
+          >
+        </li>
+        <li>
+          <a href="https://adventist.org" target="_blank" rel="noopener noreferrer" class="hover:text-amber-300 transition"
+            >General Conference World HQ</a
+          >
+        </li>
+        <li>
+          <a href="https://acms.adventist.org" target="_blank" rel="noopener noreferrer" class="hover:text-amber-300 transition"
+            >Adventist Church Management (ACMS)</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Media & Radio -->
+    <div>
+      <h4 class="text-white font-bold text-xs uppercase tracking-widest text-amber-400 mb-3">Broadcasting</h4>
+      <p class="text-xs text-slate-400 mb-3 leading-relaxed">
+        Sheki FM Radio: Proclaiming the Three Angels' Messages across coastal Kenya (Tononoka Road, Mombasa).
+      </p>
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-950 text-amber-300 text-xs font-semibold rounded-lg border border-blue-800">
+        <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+        Sheki FM 107.1 Live
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Legal Strip (Matching Adventist.org / ALPS) -->
+  <div class="border-t border-slate-800/80 bg-[#030e1d] py-5 px-4 sm:px-8 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-left">
+      <div class="text-slate-500">
+        © {currentYear} Seventh-day Adventist Church — Kenya Coast Field. All rights reserved.
+      </div>
+      <div class="flex flex-wrap gap-4 text-[11px] text-slate-400">
+        <a href="https://adventist.org/trademark-and-logo-usage/" target="_blank" class="hover:text-slate-200">Trademark & Logo Usage</a>
+        <span>•</span>
+        <a href="https://adventist.org/legal-notice/" target="_blank" class="hover:text-slate-200">Legal Notice</a>
+        <span>•</span>
+        <a href="https://adventist.org/privacy-policy/" target="_blank" class="hover:text-slate-200">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>

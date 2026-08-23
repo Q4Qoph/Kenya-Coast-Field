@@ -1,0 +1,102 @@
+---
+// src/layouts/BaseLayout.astro
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = "Official portal of the Seventh-day Adventist Church - Kenya Coast Field (EKUC). Proclaiming the everlasting gospel across Kenya's coastline.",
+  ogImage = "/og-image.jpg",
+} = Astro.props;
+
+const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.url;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | Kenya Coast Field</title>
+    <meta name="description" content={description} />
+
+    <!-- Adaptive Circular Favicons (Light & Dark Theme Support) -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/assets/sda/symbol-circle/adventist-symbol-circle--denim.svg"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/assets/sda/symbol-circle/adventist-symbol-circle--white.svg"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/sda/symbol-circle/adventist-symbol-circle--denim.png" />
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={`${title} | Kenya Coast Field SDA`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter Cards -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={`${title} | Kenya Coast Field SDA`} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- ALPS Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-adventist-canvas text-slate-900 font-sans antialiased">
+    <!-- THE CREATION GRID: 7-Column Master Page Layout (adventist.design) -->
+    <div class="min-h-screen grid grid-cols-1 lg:grid-cols-7 relative">
+      <!-- Columns 1 to 6: Main Website Content -->
+      <div class="col-span-1 lg:col-span-6 flex flex-col min-h-screen bg-white">
+        <slot />
+      </div>
+
+      <!-- Column 7: Full-Page Sabbath Column (Continuous Right Column as specified in ALPS) -->
+      <aside
+        class="hidden lg:flex lg:col-span-1 bg-[#2F557F] text-white flex-col justify-between items-center py-10 px-4 border-l border-white/10 sticky top-0 h-screen select-none shadow-inner"
+        aria-label="Sabbath Column"
+      >
+        <!-- Top: Official Solid White Church Symbol (Enlarged & Prominent) -->
+        <div class="pt-4 px-2 flex justify-center w-full">
+          <img
+            src="/assets/sda/symbol/adventist-symbol--white.svg"
+            alt="Seventh-day Adventist Church Symbol"
+            class="w-28 xl:w-32 h-auto opacity-95 hover:opacity-100 transition-all drop-shadow-lg hover:scale-105"
+          />
+        </div>
+
+        <!-- Middle: Vertical Divider -->
+        <div class="flex-grow flex items-center justify-center my-8">
+          <div class="w-px h-48 bg-white/20"></div>
+        </div>
+
+        <!-- Bottom: Silent Sabbath Column Mark -->
+        <div class="pb-2 text-center">
+          <span class="text-[11px] font-mono uppercase tracking-widest text-white/40 block [writing-mode:vertical-rl] rotate-180">
+            Seventh-day Adventist Church
+          </span>
+        </div>
+      </aside>
+    </div>
+  </body>
+</html>

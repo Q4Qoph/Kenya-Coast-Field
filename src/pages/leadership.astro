@@ -1,0 +1,82 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import leadershipData from "../data/leadership.json";
+---
+
+<BaseLayout
+  title="Field Leadership & Officers"
+  description="Executive officers and departmental directors of the Kenya Coast Field of Seventh-day Adventists."
+>
+  <Header />
+
+  <main class="flex-grow">
+    <!-- Header Banner -->
+    <div class="bg-gradient-to-r from-[#082347] to-[#003366] text-white py-12 px-4 sm:px-8 border-b border-white/10">
+      <div class="max-w-7xl mx-auto">
+        <span class="text-amber-400 font-bold uppercase tracking-wider text-xs">Administration & Secretariat</span>
+        <h1 class="text-3xl sm:text-4xl font-serif font-bold mt-1 mb-2">Kenya Coast Field Leadership</h1>
+        <p class="text-slate-300 text-sm sm:text-base max-w-2xl">
+          Meet the executive officers and departmental directors serving the coastal region under East Kenya Union Conference.
+        </p>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-12 space-y-12">
+      <!-- Executive Officers -->
+      <section>
+        <div class="mb-6">
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Executive Committee</span>
+          <h2 class="text-2xl font-serif font-bold text-[#003366]">Field Executive Officers</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          {leadershipData.officers.map((officer) => (
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+              <div>
+                <div class="w-14 h-14 rounded-full bg-[#003366] text-amber-400 font-serif font-bold text-2xl flex items-center justify-center mb-4 shadow-sm">
+                  {officer.name.split(" ")[1]?.[0] || "P"}
+                </div>
+                <span class="inline-block px-2.5 py-0.5 text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-200 rounded-full mb-2">
+                  {officer.office}
+                </span>
+                <h3 class="font-serif font-bold text-lg text-slate-900 leading-snug">{officer.name}</h3>
+                <p class="text-xs font-bold text-adventist-blue mb-3">{officer.role}</p>
+                <p class="text-xs text-slate-600 leading-relaxed mb-4">{officer.bio}</p>
+              </div>
+
+              <div class="border-t border-slate-100 pt-3 text-xs space-y-1 text-slate-500">
+                <p>✉️ <a href={`mailto:${officer.email}`} class="hover:text-[#003366]">{officer.email}</a></p>
+                <p>📞 <span>{officer.phone}</span></p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Departmental Directors -->
+      <section>
+        <div class="mb-6">
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Departments</span>
+          <h2 class="text-2xl font-serif font-bold text-[#003366]">Departmental Directors</h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {leadershipData.directors.map((dir) => (
+            <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-xs">
+              <div class="w-10 h-10 rounded-lg bg-blue-50 text-[#003366] font-bold text-base flex items-center justify-center mb-3">
+                ✝
+              </div>
+              <h3 class="font-serif font-bold text-base text-slate-900">{dir.name}</h3>
+              <p class="text-xs text-amber-700 font-semibold mt-0.5 mb-1">{dir.role}</p>
+              <span class="text-[11px] text-slate-500">{dir.office}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

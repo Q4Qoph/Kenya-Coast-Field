@@ -1,0 +1,60 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import GivingWidget from "../components/GivingWidget.astro";
+---
+
+<BaseLayout
+  title="Online Giving & Stewardship"
+  description="Return your tithes and give offerings securely to support pastoral ministry, evangelism, camp meetings, and church development."
+>
+  <Header />
+
+  <main class="flex-grow">
+    <!-- Header Banner -->
+    <div class="bg-gradient-to-r from-[#082347] to-[#003366] text-white py-12 px-4 sm:px-8 border-b border-white/10">
+      <div class="max-w-7xl mx-auto">
+        <span class="text-amber-400 font-bold uppercase tracking-wider text-xs">Faithful Stewardship</span>
+        <h1 class="text-3xl sm:text-4xl font-serif font-bold mt-1 mb-2">Online Giving & Tithes</h1>
+        <p class="text-slate-300 text-sm sm:text-base max-w-2xl">
+          "Bring all the tithes into the storehouse, that there may be food in My house..." — Malachi 3:10
+        </p>
+      </div>
+    </div>
+
+    <!-- Giving Widget Component -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-10">
+      <GivingWidget />
+
+      <!-- Stewardship Principles & FAQs -->
+      <div class="mt-14 grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-xs">
+          <div class="text-2xl mb-2">🕊️</div>
+          <h3 class="font-serif font-bold text-lg text-[#003366] mb-2">The Holy Tithe (10%)</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            The tithe belongs to the Lord and is strictly used for the support of the gospel ministry, pastoral salaries, and global evangelistic endeavors through the East Kenya Union.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-xs">
+          <div class="text-2xl mb-2">🌱</div>
+          <h3 class="font-serif font-bold text-lg text-[#003366] mb-2">Free-Will Offerings</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Combined offerings maintain local church operations, Sabbath School materials, church maintenance, and community welfare initiatives across the coast.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-xs">
+          <div class="text-2xl mb-2">⛺</div>
+          <h3 class="font-serif font-bold text-lg text-[#003366] mb-2">Camp Meeting Fund</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Special annual contributions dedicated to financing district camp meetings, guest speaker hospitality, audio-visual broadcasting, and youth programs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

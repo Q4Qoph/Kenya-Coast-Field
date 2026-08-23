@@ -1,0 +1,50 @@
+{
+  "officers": [
+    {
+      "name": "Pr. Christopher Nyangie",
+      "role": "Field President",
+      "office": "Administration",
+      "email": "president@kcf.adventist.or.ke",
+      "phone": "+254-724-561-850",
+      "bio": "Overseeing pastoral ministry, spiritual growth, and field strategic initiatives."
+    },
+    {
+      "name": "Pr. Maxwell Mwashighadi",
+      "role": "Executive Secretary",
+      "office": "Secretariat",
+      "email": "secretary@kcf.adventist.or.ke",
+      "phone": "+254-724-931-090",
+      "bio": "Managing church records, ACMS registration, pastoral placements, and credentials."
+    },
+    {
+      "name": "Elder Victor Bartonjo",
+      "role": "Treasurer / CFO",
+      "office": "Treasury",
+      "email": "treasurer@kcf.adventist.or.ke",
+      "phone": "+254-724-561-850",
+      "bio": "Directing financial stewardship, audit compliance, tithe remittance, and trust services."
+    }
+  ],
+  "directors": [
+    {
+      "name": "Pr. Tom Osiemo",
+      "role": "Adventist Youth Ministries (AYM)",
+      "office": "Youth Department"
+    },
+    {
+      "name": "Pr. Joseph Kariuki",
+      "role": "Publishing & Spirit of Prophecy",
+      "office": "Literature Ministry"
+    },
+    {
+      "name": "Pr. Emmanuel Safari",
+      "role": "Sabbath School & Personal Ministries (SSPM)",
+      "office": "Evangelism"
+    },
+    {
+      "name": "Elder David Mganga",
+      "role": "Communication & Media (Sheki FM)",
+      "office": "Media"
+    }
+  ]
+}

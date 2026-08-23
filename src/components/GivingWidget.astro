@@ -1,0 +1,150 @@
+---
+// src/components/GivingWidget.astro
+---
+
+<div class="bg-gradient-to-br from-[#082347] to-[#003366] text-white p-6 sm:p-10 rounded-2xl shadow-xl border border-slate-700/50">
+  <div class="max-w-4xl mx-auto">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="inline-block w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+      <span class="text-amber-400 font-bold uppercase tracking-wider text-xs">Stewardship & E-Giving</span>
+    </div>
+    
+    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-2">
+      Support the Kenya Coast Field Mission
+    </h2>
+    <p class="text-slate-300 text-sm sm:text-base max-w-2xl mb-8 leading-relaxed">
+      Return your tithes and give offerings securely to support pastoral ministry, evangelism, camp meetings, and church development across coastal Kenya.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- M-Pesa Paybill Hub -->
+      <div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/10 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold text-lg text-white flex items-center gap-2">
+              <span class="text-amber-400 text-xl">📱</span> M-Pesa Paybill
+            </h3>
+            <span class="text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded font-medium">Instant</span>
+          </div>
+
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between items-center bg-black/20 p-3 rounded-lg border border-white/5">
+              <div>
+                <div class="text-[11px] text-slate-300 uppercase font-semibold">Business Number</div>
+                <div class="font-mono font-bold text-lg text-amber-300">522522</div>
+              </div>
+              <button
+                type="button"
+                class="copy-btn text-xs bg-white/10 hover:bg-white/20 text-slate-200 px-3 py-1.5 rounded transition font-medium cursor-pointer"
+                data-copy="522522"
+              >
+                Copy
+              </button>
+            </div>
+
+            <div class="bg-black/20 p-3 rounded-lg border border-white/5 space-y-2">
+              <div class="text-[11px] text-slate-300 uppercase font-semibold">Designated Account Numbers</div>
+              <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+                <div class="bg-white/5 p-2 rounded flex justify-between items-center">
+                  <div>
+                    <div class="text-slate-400 text-[10px]">Tithe / EKUC</div>
+                    <div class="font-bold text-white">1100223</div>
+                  </div>
+                  <button type="button" class="copy-btn text-[10px] text-amber-400 hover:underline cursor-pointer" data-copy="1100223">Copy</button>
+                </div>
+                <div class="bg-white/5 p-2 rounded flex justify-between items-center">
+                  <div>
+                    <div class="text-slate-400 text-[10px]">Field Evangelism</div>
+                    <div class="font-bold text-white">1100224</div>
+                  </div>
+                  <button type="button" class="copy-btn text-[10px] text-amber-400 hover:underline cursor-pointer" data-copy="1100224">Copy</button>
+                </div>
+                <div class="bg-white/5 p-2 rounded flex justify-between items-center">
+                  <div>
+                    <div class="text-slate-400 text-[10px]">Camp Meeting</div>
+                    <div class="font-bold text-white">1100225</div>
+                  </div>
+                  <button type="button" class="copy-btn text-[10px] text-amber-400 hover:underline cursor-pointer" data-copy="1100225">Copy</button>
+                </div>
+                <div class="bg-white/5 p-2 rounded flex justify-between items-center">
+                  <div>
+                    <div class="text-slate-400 text-[10px]">Development</div>
+                    <div class="font-bold text-white">1100226</div>
+                  </div>
+                  <button type="button" class="copy-btn text-[10px] text-amber-400 hover:underline cursor-pointer" data-copy="1100226">Copy</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-xs text-slate-400 mt-4">
+          💡 Enter your Full Name as Account Reference for local church reconciliation.
+        </p>
+      </div>
+
+      <!-- Bank Wire & ACMS Details -->
+      <div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/10 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold text-lg text-white flex items-center gap-2">
+              <span class="text-amber-400 text-xl">🏦</span> Direct Bank Transfer
+            </h3>
+            <span class="text-[11px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded font-medium">Bank</span>
+          </div>
+
+          <div class="space-y-2.5 text-sm bg-black/20 p-4 rounded-lg border border-white/5">
+            <div class="flex justify-between border-b border-white/10 pb-2">
+              <span class="text-slate-300 text-xs">Bank Name:</span>
+              <span class="font-bold text-xs text-white">Kenya Commercial Bank (KCB)</span>
+            </div>
+            <div class="flex justify-between border-b border-white/10 pb-2">
+              <span class="text-slate-300 text-xs">Account Name:</span>
+              <span class="font-bold text-xs text-white">Kenya Coast Field SDA</span>
+            </div>
+            <div class="flex justify-between border-b border-white/10 pb-2 items-center">
+              <span class="text-slate-300 text-xs">Account Number:</span>
+              <div class="flex items-center gap-2">
+                <span class="font-mono font-bold text-amber-300 text-xs">1129384756</span>
+                <button type="button" class="copy-btn text-[10px] text-amber-400 hover:underline cursor-pointer" data-copy="1129384756">Copy</button>
+              </div>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-300 text-xs">Branch:</span>
+              <span class="font-bold text-xs text-white">Mombasa Treasury Square</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
+          <span class="text-xs text-slate-300">Need an official receipt?</span>
+          <a
+            href="mailto:treasurer@kcf.adventist.or.ke"
+            class="text-xs text-amber-300 hover:text-amber-200 font-semibold underline"
+          >
+            Email Treasury Desk →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLElement;
+      const textToCopy = target.dataset.copy;
+      if (textToCopy) {
+        navigator.clipboard?.writeText(textToCopy);
+        const originalText = target.innerText;
+        target.innerText = 'Copied!';
+        target.classList.add('text-emerald-400');
+        setTimeout(() => {
+          target.innerText = originalText;
+          target.classList.remove('text-emerald-400');
+        }, 1800);
+      }
+    });
+  });
+</script>

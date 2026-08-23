@@ -1,0 +1,114 @@
+[
+  {
+    "id": "mombasa-central",
+    "name": "Mombasa Central SDA Church",
+    "district": "Mombasa Central District",
+    "county": "Mombasa",
+    "location": "Tononoka / Off Ronald Ngala Rd",
+    "pastor": "Pr. Maxwell Mwashighadi",
+    "serviceTimes": {
+      "sabbathSchool": "09:00 AM",
+      "divineService": "11:00 AM",
+      "adventistYouth": "02:30 PM"
+    },
+    "coordinates": { "lat": -4.0435, "lng": 39.6682 },
+    "givingPaybill": "522522",
+    "givingAccount": "1100223"
+  },
+  {
+    "id": "bamburi-sda",
+    "name": "Bamburi SDA Church",
+    "district": "Bamburi District",
+    "county": "Mombasa",
+    "location": "Bamburi Mtambo Road (Near Field HQ)",
+    "pastor": "Pr. Tom Osiemo",
+    "serviceTimes": {
+      "sabbathSchool": "09:00 AM",
+      "divineService": "11:00 AM",
+      "adventistYouth": "02:30 PM"
+    },
+    "coordinates": { "lat": -4.0048, "lng": 39.7126 },
+    "givingPaybill": "247247",
+    "givingAccount": "072000"
+  },
+  {
+    "id": "kilifi-town-sda",
+    "name": "Kilifi Town SDA Church",
+    "district": "Kilifi Central District",
+    "county": "Kilifi",
+    "location": "Kilifi Town Center",
+    "pastor": "Pr. Joseph Kariuki",
+    "serviceTimes": {
+      "sabbathSchool": "09:00 AM",
+      "divineService": "11:00 AM",
+      "adventistYouth": "02:00 PM"
+    },
+    "coordinates": { "lat": -3.6305, "lng": 39.8499 },
+    "givingPaybill": "522522",
+    "givingAccount": "1100224"
+  },
+  {
+    "id": "malindi-central-sda",
+    "name": "Malindi Central SDA Church",
+    "district": "Malindi District",
+    "county": "Kilifi",
+    "location": "Malindi Town, Along Casuarina Rd",
+    "pastor": "Pr. Emmanuel Safari",
+    "serviceTimes": {
+      "sabbathSchool": "09:00 AM",
+      "divineService": "11:00 AM",
+      "adventistYouth": "02:30 PM"
+    },
+    "coordinates": { "lat": -3.2185, "lng": 40.1169 },
+    "givingPaybill": "522522",
+    "givingAccount": "1100225"
+  },
+  {
+    "id": "voi-central-sda",
+    "name": "Voi Central SDA Church",
+    "district": "Taita District",
+    "county": "Taita Taveta",
+    "location": "Voi Town Center, Near Sub-County Hospital",
+    "pastor": "Pr. David Mganga",
+    "serviceTimes": {
+      "sabbathSchool": "09:00 AM",
+      "divineService": "11:00 AM",
+      "adventistYouth": "02:30 PM"
+    },
+    "coordinates": { "lat": -3.3966, "lng": 38.5561 },
+    "givingPaybill": "522522",
+    "givingAccount": "1100226"
+  },
+  {
+    "id": "diani-sda",
+    "name": "Diani SDA Church",
+    "district": "Kwale South District",
+    "county": "Kwale",
+    "location": "Diani Beach Road, Ukunda",
+    "pastor": "Pr. Samuel Ndoro",
+    "serviceTimes": {
+      "sabbathSchool": "09:00 AM",
+      "divineService": "11:00 AM",
+      "adventistYouth": "02:00 PM"
+    },
+    "coordinates": { "lat": -4.2798, "lng": 39.5815 },
+    "givingPaybill": "522522",
+    "givingAccount": "1100227"
+  },
+  {
+    "id": "lamu-town-sda",
+    "name": "Lamu Mission SDA Church",
+    "district": "Lamu District",
+    "county": "Lamu",
+    "location": "Lamu Island / Mokowe",
+    "pastor": "Pr. Julius Mwatela",
+    "serviceTimes": {
+      "sabbathSchool": "09:15 AM",
+      "divineService": "11:15 AM",
+      "adventistYouth": "02:30 PM"
+    },
+    "coordinates": { "lat": -2.2717, "lng": 40.902 },
+    "givingPaybill": "522522",
+    "givingAccount": "1100228"
+  }
+]

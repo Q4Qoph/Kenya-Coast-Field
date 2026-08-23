@@ -1,0 +1,95 @@
+---
+// src/pages/camp-meetings.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CampMeetingCard from "../components/CampMeetingCard.astro";
+import { getCollection } from "astro:content";
+
+const allMeetings = await getCollection("campMeetings");
+// Sort by startDate
+const sortedMeetings = allMeetings.sort(
+  (a, b) => new Date(a.data.startDate).getTime() - new Date(b.data.startDate).getTime()
+);
+---
+
+<BaseLayout
+  title="Camp Meetings 2026"
+  description="Schedule, speakers, and venue details for the 2026 Seventh-day Adventist District Camp Meetings across Kenya Coast Field."
+>
+  <Header />
+
+  <main class="flex-grow">
+    <!-- Header Banner -->
+    <div class="bg-gradient-to-r from-[#082347] via-[#003366] to-[#082347] text-white py-14 px-4 sm:px-8 border-b border-white/10">
+      <div class="max-w-7xl mx-auto text-center space-y-3">
+        <span class="inline-block px-3.5 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-semibold uppercase tracking-wider border border-amber-400/30">
+          Spiritual Convocation 2026
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-serif font-bold text-white leading-tight">
+          Kenya Coast Field Camp Meetings
+        </h1>
+        <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+          "Gather my saints together unto me; those that have made a covenant with me by sacrifice." — Psalm 50:5
+        </p>
+      </div>
+    </div>
+
+    <!-- Main Grid Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-12">
+      <!-- Section Intro -->
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#003366]">
+            District Camp Meetings Schedule
+          </h2>
+          <p class="text-slate-600 text-sm mt-1">
+            Browse dates, guest evangelists, and locations for camp meetings in your district.
+          </p>
+        </div>
+        <div class="bg-amber-50 text-amber-900 border border-amber-200 px-3.5 py-1.5 rounded-lg text-xs font-semibold">
+          ⛺ {sortedMeetings.length} Camp Meetings Scheduled
+        </div>
+      </div>
+
+      <!-- Camp Meeting Cards Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {sortedMeetings.map((meeting) => (
+          <CampMeetingCard meeting={meeting} />
+        ))}
+      </div>
+
+      <!-- Camp Meeting Preparation & Stewardship Banner -->
+      <div class="mt-16 bg-gradient-to-br from-[#082347] to-[#003366] text-white rounded-2xl p-8 sm:p-10 shadow-lg border border-white/10">
+        <div class="grid md:grid-cols-3 gap-8 items-center">
+          <div class="md:col-span-2 space-y-3">
+            <span class="text-amber-400 font-bold uppercase tracking-wider text-xs">Camp Meeting Stewardship</span>
+            <h3 class="text-2xl font-serif font-bold text-white">Support Your District Camp Meeting Fund</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Your donations provide lodging for guest speakers, tents and PA sound systems, live broadcast infrastructure, and Sabbath school materials for children.
+            </p>
+            <div class="pt-2 flex flex-wrap gap-4 text-xs font-mono">
+              <div class="bg-black/30 px-3 py-2 rounded-lg border border-white/10">
+                <span class="text-slate-400">Paybill:</span> <strong class="text-amber-300">522522</strong>
+              </div>
+              <div class="bg-black/30 px-3 py-2 rounded-lg border border-white/10">
+                <span class="text-slate-400">Account:</span> <strong class="text-amber-300">KCF-CAMP</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center sm:text-right">
+            <a
+              href="/giving"
+              class="inline-block px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition shadow-md text-sm"
+            >
+              Online Giving Portal →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

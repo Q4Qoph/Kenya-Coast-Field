@@ -1,0 +1,126 @@
+---
+// src/components/Header.astro
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/find-a-church", label: "Find a Church" },
+  { href: "/camp-meetings", label: "Camp Meetings" },
+  { href: "/ministries", label: "Ministries" },
+  { href: "/leadership", label: "Leadership" },
+  { href: "/prayer-request", label: "Prayer Desk" },
+];
+---
+
+<header class="w-full bg-white text-slate-800 border-b border-slate-200 sticky top-0 z-50">
+  <!-- Tier 1: Utility Bar (Matching ECD & TED ALPS Headers) -->
+  <div class="border-b border-slate-100 text-xs py-1.5 px-4 sm:px-8 text-slate-500 bg-slate-50/70">
+    <div class="max-w-7xl mx-auto flex justify-between items-center text-[11px]">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-[#2F557F]"></span>
+        <span>A Field of the <strong>East Kenya Union Conference (EKUC)</strong></span>
+      </div>
+      <div class="hidden sm:flex items-center gap-4 font-medium tracking-wide">
+        <a href="/prayer-request" class="hover:text-[#2F557F] transition">PRAYER DESK</a>
+        <span class="text-slate-300">|</span>
+        <a href="https://sabbath-school.adventech.io" target="_blank" rel="noopener noreferrer" class="hover:text-[#2F557F] transition">E-QUARTERLY</a>
+        <span class="text-slate-300">|</span>
+        <span class="text-[#2F557F] font-semibold">★ KISWAHILI / ENG</span>
+        <span class="text-slate-300">|</span>
+        <a href="/find-a-church" class="hover:text-[#2F557F] transition flex items-center gap-1">
+          <span>SEARCH</span>
+          <span>🔍</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tier 2: Official ALPS Lockup & Main Navigation -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 flex items-center justify-between">
+    <!-- Official Seventh-day Adventist Entity Lockup (Matching ECD screenshot & Guidelines) -->
+    <a href="/" class="flex items-center gap-3 group py-1 select-none">
+      <!-- Seventh-day Adventist Flame Symbol -->
+      <img
+        src="/assets/sda/symbol/adventist-symbol--denim.svg"
+        alt="Seventh-day Adventist Church Symbol"
+        class="h-13 sm:h-16 w-auto shrink-0 group-hover:scale-105 transition-transform"
+      />
+      <!-- Wordmark + Entity Identifier Below (Pure Advent Sans Typography) -->
+      <div class="flex flex-col justify-center font-advent leading-none">
+        <span class="text-[15px] sm:text-[17px] font-bold text-[#2F557F] tracking-tight leading-none">
+          Seventh-day
+        </span>
+        <span class="text-[15px] sm:text-[17px] font-bold text-[#2F557F] tracking-tight leading-none mt-0.5">
+          Adventist Church
+        </span>
+        <span class="text-[9px] sm:text-[10px] font-bold text-[#3E8391] uppercase tracking-[0.24em] leading-none mt-1.5">
+          Kenya Coast Field
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Links (Matching ECD & Adventist.org typography) -->
+    <nav class="hidden lg:flex items-center gap-7 text-sm font-normal text-slate-800">
+      {navLinks.map((item) => (
+        <a
+          href={item.href}
+          class="hover:text-[#2F557F] transition font-normal py-1 border-b-2 border-transparent hover:border-[#2F557F]"
+        >
+          {item.label}
+        </a>
+      ))}
+      <a
+        href="/giving"
+        class="px-4 py-2 rounded-full bg-[#2F557F] hover:bg-[#234974] text-white font-medium text-xs uppercase tracking-wider transition shadow-xs"
+      >
+        Online Giving
+      </a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-btn"
+      type="button"
+      aria-label="Toggle Navigation"
+      class="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 focus:outline-none"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-200 px-4 py-4 space-y-3">
+    {navLinks.map((item) => (
+      <a
+        href={item.href}
+        class="block py-2 text-sm font-medium text-slate-700 hover:text-[#2F557F] transition border-b border-slate-100"
+      >
+        {item.label}
+      </a>
+    ))}
+    <div class="pt-2 flex flex-col gap-2">
+      <a
+        href="/prayer-request"
+        class="block text-center py-2 rounded-lg bg-slate-100 text-slate-800 text-xs font-bold"
+      >
+        🙏 Confidential Prayer Desk
+      </a>
+      <a
+        href="/giving"
+        class="block text-center py-2.5 rounded-lg bg-[#2F557F] text-white font-bold text-xs uppercase tracking-wider"
+      >
+        💳 Online Giving & Tithes
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  }
+</script>
