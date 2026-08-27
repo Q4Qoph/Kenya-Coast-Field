@@ -79,11 +79,17 @@ const event = data.eventDetails;
 
         {/* Featured Image */}
         {data.image && (
-          <div class="aspect-video w-full rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100">
+          <div class="relative w-full max-h-[600px] rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-950 flex items-center justify-center p-2 sm:p-4">
+            <img
+              src={data.image}
+              alt=""
+              aria-hidden="true"
+              class="absolute inset-0 w-full h-full object-cover blur-2xl opacity-30 scale-105 pointer-events-none"
+            />
             <img
               src={data.image}
               alt={data.title}
-              className="w-full h-full object-cover"
+              class="relative z-10 max-h-[560px] w-auto max-w-full object-contain rounded-lg shadow-xl"
             />
           </div>
         )}

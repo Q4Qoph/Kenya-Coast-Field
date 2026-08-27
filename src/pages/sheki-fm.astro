@@ -1,0 +1,278 @@
+---
+// src/pages/sheki-fm.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ShekiRadioPlayer from "../components/ShekiRadioPlayer.tsx";
+import ShekiSchedule from "../components/ShekiSchedule.tsx";
+---
+
+<BaseLayout
+  title="Sheki FM 106.6 | Twavuma Twasikika - Kenya Coast Field Radio"
+  description="Official live broadcast hub of Sheki FM 106.6 (Twavuma Twasikika). Listen live, view weekly radio schedules, coastal transmission frequencies, and connect with the studio."
+>
+  <Header />
+
+  <main class="flex-grow">
+    <!-- Hero Broadcast Banner -->
+    <section class="bg-gradient-to-b from-[#001d3d] via-[#002b5c] to-slate-900 text-white py-12 sm:py-16 px-4 sm:px-8 border-b border-white/10 relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto space-y-8 relative z-10">
+        <!-- Station Identity & Title -->
+        <div class="flex flex-col md:flex-row items-center md:items-start gap-6 text-center md:text-left">
+          <div class="h-28 w-28 sm:h-32 sm:w-32 rounded-3xl bg-white p-3 shadow-2xl flex items-center justify-center border-2 border-amber-400/40 shrink-0">
+            <img
+              src="/assets/sheki/sheki-logo.png"
+              alt="Sheki FM 106.6 Official Logo"
+              class="h-full w-full object-contain"
+            />
+          </div>
+
+          <div class="space-y-2">
+            <div class="flex items-center justify-center md:justify-start gap-2 flex-wrap">
+              <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-400/20 text-amber-300 border border-amber-400/30">
+                Official Voice of Kenya Coast Field (EKUC)
+              </span>
+              <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-rose-500/20 text-rose-300 border border-rose-500/30 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-rose-400 animate-ping"></span>
+                On Air 24/7
+              </span>
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
+              Sheki FM 106.6
+            </h1>
+
+            <p class="text-lg sm:text-xl font-medium text-amber-300 italic">
+              "Twavuma Twasikika" — Broadcasting Hope Across Coastal Kenya
+            </p>
+
+            <p class="text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">
+              Sheki FM is the flagship radio network of the Seventh-day Adventist Church - Kenya Coast Field. Operating from Tononoka, Mombasa, the station broadcasts Christ-centered spiritual nourishment, family health, uplifting sacred music, and community transformation across 10 coastal and frontier counties.
+            </p>
+          </div>
+        </div>
+
+        <!-- Embedded Live Player -->
+        <div class="pt-2">
+          <ShekiRadioPlayer client:load />
+        </div>
+      </div>
+    </section>
+
+    <!-- Frequencies & Coastal Transmission Guide -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-8 py-12 border-b border-slate-200">
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="text-xs font-bold uppercase tracking-widest text-[#2F557F] bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
+          Transmission Network
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-2">
+          Coastal Frequencies & Coverage Hubs
+        </h2>
+        <p class="text-slate-600 text-xs sm:text-sm mt-1">
+          Tune your terrestrial FM receiver to our local frequencies or stream worldwide anywhere with internet access.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Hub 1: Mombasa -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs hover:shadow-md transition text-center flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-12 h-12 mx-auto rounded-full bg-blue-100 text-[#003366] flex items-center justify-center font-bold text-xl">
+              📻
+            </div>
+            <div>
+              <span class="text-[10px] uppercase font-bold tracking-wider text-slate-500">Main Studio & Transmitter</span>
+              <h3 class="text-2xl font-mono font-bold text-[#003366] mt-0.5">106.6 FM</h3>
+              <h4 class="font-serif font-bold text-base text-slate-900 mt-1">Mombasa & Environs</h4>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Serving Mombasa Island, Nyali, Bamburi, Likoni, Changamwe, Kilifi South & Kwale North.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 text-[11px] text-emerald-700 font-semibold flex items-center justify-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Primary Signal Active
+          </div>
+        </div>
+
+        <!-- Hub 2: Taita Taveta -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs hover:shadow-md transition text-center flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-12 h-12 mx-auto rounded-full bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-xl">
+              ⛰️
+            </div>
+            <div>
+              <span class="text-[10px] uppercase font-bold tracking-wider text-slate-500">Hilltop Booster</span>
+              <h3 class="text-2xl font-mono font-bold text-[#003366] mt-0.5">106.8 FM</h3>
+              <h4 class="font-serif font-bold text-base text-slate-900 mt-1">Taita Taveta & Voi</h4>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Serving Voi Town, Wundanyi, Mwatate, Taveta border, and Nairobi–Mombasa highway transit.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 text-[11px] text-emerald-700 font-semibold flex items-center justify-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Expanded Broadcast
+          </div>
+        </div>
+
+        <!-- Hub 3: Lamu -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs hover:shadow-md transition text-center flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-12 h-12 mx-auto rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xl">
+              🏝️
+            </div>
+            <div>
+              <span class="text-[10px] uppercase font-bold tracking-wider text-slate-500">Northern Coast Station</span>
+              <h3 class="text-2xl font-mono font-bold text-[#003366] mt-0.5">107.2 FM</h3>
+              <h4 class="font-serif font-bold text-base text-slate-900 mt-1">Lamu & Archipelago</h4>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Serving Lamu Old Town, Mokowe Mainland, Mpeketoni, and Northern Coastal communities.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 text-[11px] text-emerald-700 font-semibold flex items-center justify-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Expanded Broadcast
+          </div>
+        </div>
+
+        <!-- Hub 4: Online Stream -->
+        <div class="bg-gradient-to-br from-[#003366] to-[#082347] text-white rounded-2xl p-6 border border-white/10 shadow-xs hover:shadow-md transition text-center flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="w-12 h-12 mx-auto rounded-full bg-amber-400 text-slate-950 flex items-center justify-center font-bold text-xl">
+              🌐
+            </div>
+            <div>
+              <span class="text-[10px] uppercase font-bold tracking-wider text-amber-300">Worldwide Digital Stream</span>
+              <h3 class="text-2xl font-mono font-bold text-white mt-0.5">HD Audio</h3>
+              <h4 class="font-serif font-bold text-base text-white mt-1">Web & Mobile 24/7</h4>
+            </div>
+            <p class="text-xs text-slate-200 leading-relaxed">
+              Stream uninterrupted on phones, laptops, and smart speakers across Kenya and the diaspora.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/10 text-[11px] text-amber-300 font-semibold flex items-center justify-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span> Global Broadcast Live
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Weekly Broadcast Timetable -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-8 py-12 border-b border-slate-200">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
+        <div class="border-l-4 border-[#2F557F] pl-3">
+          <span class="text-xs font-bold uppercase tracking-widest text-[#2F557F]">Program Guide</span>
+          <h2 class="text-2xl sm:text-3xl font-serif font-bold text-slate-900 mt-0.5">
+            Weekly Broadcast Schedule
+          </h2>
+          <p class="text-slate-600 text-xs sm:text-sm mt-1">
+            Carefully curated spiritual programs, health seminars, and Adventist youth ministry.
+          </p>
+        </div>
+
+        <div class="text-xs font-mono text-slate-500 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200">
+          🕒 All times in East Africa Time (GMT+3)
+        </div>
+      </div>
+
+      <ShekiSchedule client:load />
+    </section>
+
+    <!-- Studio Interaction & Dedication Desk -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-8 py-12">
+      <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Left: WhatsApp & Contact Desk -->
+        <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-6 flex flex-col justify-between">
+          <div class="space-y-3">
+            <span class="text-xs font-bold uppercase tracking-widest text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 inline-block">
+              Interactive Studio Desk
+            </span>
+            <h3 class="text-2xl sm:text-3xl font-serif font-bold text-slate-900">
+              Connect Directly with the Studio
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Have a hymn request, prayer petition, thanksgiving message, or feedback for our on-air presenters? Reach out to the studio desk instantly.
+            </p>
+
+            <div class="grid sm:grid-cols-2 gap-4 pt-2">
+              <a
+                href="https://wa.me/254724561850?text=Hello%20Sheki%20FM%20Studio%2C%20I%20am%20listening%20live%20and%20would%20like%20to%20send%20a%20request..."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-3 p-4 rounded-2xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-900 transition"
+              >
+                <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-lg shrink-0">
+                  💬
+                </div>
+                <div>
+                  <h4 class="font-bold text-xs uppercase tracking-wider text-emerald-800">WhatsApp Dedications</h4>
+                  <p class="text-xs text-emerald-950 font-mono">+254 724 561 850</p>
+                </div>
+              </a>
+
+              <a
+                href="tel:+254724561850"
+                class="flex items-center gap-3 p-4 rounded-2xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-900 transition"
+              >
+                <div class="w-10 h-10 rounded-xl bg-[#003366] text-white flex items-center justify-center font-bold text-lg shrink-0">
+                  📞
+                </div>
+                <div>
+                  <h4 class="font-bold text-xs uppercase tracking-wider text-[#003366]">On-Air Studio Hotline</h4>
+                  <p class="text-xs text-slate-900 font-mono">+254 724 561 850</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500">
+            <span>📍 Studio Location: <strong>KCF Headquarters, Tononoka, Mombasa</strong></span>
+            <a href="/prayer-request" class="text-[#003366] font-bold hover:underline">
+              Send Online Prayer Request →
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Support Sheki FM Radio Ministry -->
+        <div class="lg:col-span-5 bg-gradient-to-br from-[#082347] to-[#002244] text-white rounded-3xl p-6 sm:p-8 border border-white/10 shadow-xl flex flex-col justify-between">
+          <div class="space-y-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20 inline-block">
+              Radio Evangelism Partner
+            </span>
+            <h3 class="text-2xl font-serif font-bold text-white">
+              Support Sheki FM Ministry
+            </h3>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+              Your faithful donations power our transmitter expansion, radio production equipment, and evangelistic broadcasts reaching unreached coastal frontier communities.
+            </p>
+
+            <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-4 space-y-2 text-xs font-mono">
+              <div class="flex justify-between items-center text-slate-300">
+                <span>M-PESA Paybill:</span>
+                <strong class="text-white text-sm">522522</strong>
+              </div>
+              <div class="flex justify-between items-center text-slate-300">
+                <span>Account Name:</span>
+                <strong class="text-amber-300 text-sm">KCF-SHEKI-FM</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-6">
+            <a
+              href="/giving"
+              class="w-full block text-center py-3 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold uppercase tracking-wider transition shadow-lg"
+            >
+              Give Online via KCF E-Giving →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
